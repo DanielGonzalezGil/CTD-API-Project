@@ -1,6 +1,6 @@
 # CTD-API-Project
-[My Open API Project](https://danielgonzalezgil.github.io/CTD-API-Project/)
-## Instructions for Running the Webpage
+[View Open API Project Here](https://danielgonzalezgil.github.io/CTD-API-Project/)
+## Instructions for Running the Webpage locally
 
 To run the webpage locally, follow these steps:
 
@@ -18,4 +18,5 @@ To run the webpage locally, follow these steps:
     - You can simply double-click the `index.html` file, or
     - Right-click the file and select "Open with" followed by your preferred web browser.
 
-Your webpage should now be running locally on your machine.
+The webpage should now be running locally on your machine.
+
