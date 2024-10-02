@@ -2,9 +2,9 @@
 import {apiKey} from '../backend/secretInfo.js';
 
 // ---------- The DOG API Processing Code ----------
-const apiBaseURL = 'https://api.thedogapi.com/v1/';
+const apiURL = 'https://api.thedogapi.com/v1/images/search';
 const apiMultiplePicsEndpoint = 'images/search?limit=30&breed_ids=beng&api_key=';
-const apiSinglePicEndpoint = 'images/search';
+
 
 
 
@@ -15,8 +15,8 @@ const apiSinglePicEndpoint = 'images/search';
 // Fetching one picture from the API
 async function fetchOnePic(){
     try{
-        location.href = "cuteDog.html";
-        const response = await fetch(`${apiBaseURL}${apiSinglePicEndpoint}`);
+        
+        const response = await fetch(`${apiURL}`);
 
         // if the response is not ok then throw an error
         if(!response.ok){
@@ -24,18 +24,17 @@ async function fetchOnePic(){
         }
         const data = await response.json();
         const dogPic = data[0].url;
-        console.log(dogPic);
         const imgElement = document.getElementById('dogImage');
         imgElement.src = dogPic;
-        imgElement.style.display ="block";
+        imgElement.style.display = 'block';
 
-
-        // console.log(data);
+        location.href = "cuteDog.html";
 
     }
     catch(error){
         console.log(error);
     }
+
 }
 
 
@@ -44,7 +43,7 @@ async function fetchMultiplePics(){
     try{
         location.href = "cuteDogs.html";
 
-        const response = await fetch(`${apiBaseURL}${apiMultiplePicsEndpoint}${apiKey}`);
+        const response = await fetch(`${apiURL}${apiMultiplePicsEndpoint}${apiKey}`);
 
         // if the response is not ok then throw an error
         if(!response.ok){
@@ -69,7 +68,5 @@ async function fetchMultiplePics(){
 }
 
 //allows the functions to be called from the user clicking the buttons
-window.fetchOnePic = fetchOnePic;
 window.fetchMultiplePics = fetchMultiplePics;
-
-
+window.fetchOnePic = fetchOnePic;
