@@ -6,36 +6,32 @@ const apiURL = 'https://api.thedogapi.com/v1/images/search';
 const apiMultiplePicsEndpoint = 'images/search?limit=30&breed_ids=beng&api_key=';
 
 
-
-
-// fetchMultiplePics();
-
-
-
-// Fetching one picture from the API
 async function fetchOnePic(){
     try{
-        
-        const response = await fetch(`${apiURL}`);
+        location.href = "cuteDog.html";  // <-- ISSUE !!!
+        // Fetching one picture from the API
+        const dogImageElement = document.getElementById('dogImage');
 
-        // if the response is not ok then throw an error
+        const response = await fetch(`${apiURL}`);
         if(!response.ok){
             throw new Error('Could not fetch the data from the dog API');
         }
-        const data = await response.json();
-        const dogPic = data[0].url;
-        const imgElement = document.getElementById('dogImage');
-        imgElement.src = dogPic;
-        imgElement.style.display = 'block';
 
-        location.href = "cuteDog.html";
+        const dogAPIData = await response.json();
+        const dogImage = dogAPIData[0]["url"];
+        
+        dogImageElement.src = dogImage;
+        console.log(dogImageElement.src);
+        dogImageElement.style.display = 'block';
 
     }
+
     catch(error){
         console.log(error);
     }
 
 }
+
 
 
 // Fetching multiple pictures from the API
